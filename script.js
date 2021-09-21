@@ -26,15 +26,20 @@ function compareDates(sum, lnum) {
 
 function checkBirthDateIsLucky() {
   var bdate = birthDate.value;
-  var lnum = luckyNumber.value;
+  var lnum = Number(luckyNumber.value);
 
-  var sum = calculateSum(bdate);
+  if(lnum < 0) {
+    outputBox.innerHTML = "Number should be positive";
+  } else if(lnum === 0 | lnum === 1) {
+    outputBox.innerHTML = "Number should not be 0 or 1";
+  } else {
+    var sum = calculateSum(bdate);
 
-  if(sum&&lnum)
-  compareDates(sum, lnum);
-  else
-  outputBox.innerHTML = "Please enter both the fields";
-
+    if(sum&&lnum)
+    compareDates(sum, lnum);
+    else
+    outputBox.innerHTML = "Please enter both the fields";
+  }
 }
 
 checkBtnRef.addEventListener("click", checkBirthDateIsLucky);
